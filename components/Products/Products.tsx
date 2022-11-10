@@ -20,7 +20,6 @@ function Product() {
     const [hasMore, setHasMore] = useState<boolean>(true)
     let count: number = 4;
     const fetchData = useCallback(async (countScroll: number) => {
-        console.log("fetch data")
         const data = await getAllProducts()
         console.log(data)
         setAllProducts(data.products)
