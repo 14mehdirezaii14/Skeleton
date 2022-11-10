@@ -9,8 +9,12 @@ import { Grid } from "@mui/material";
 import Image from "next/image";
 import SkeltonCardProduct from "./SkeltonCardProduct";
 import InfiniteScroll from "react-infinite-scroll-component";
-
-
+import { CircularProgress } from "@mui/material";
+const Loading = () => {
+    return (
+        <CircularProgress />
+    )
+}
 
 
 function Product() {
@@ -41,7 +45,7 @@ function Product() {
             dataLength={products ? products.length : 0} //This is important field to render the next data
             next={scroll}
             hasMore={hasMore}
-            loader={<h4>Loading...</h4>}
+            loader={<p style={{ textAlign: 'center' }}><CircularProgress /></p>}
             endMessage={
                 <p style={{ textAlign: 'center' }}>
                     <b>Yay! You have seen it all</b>
