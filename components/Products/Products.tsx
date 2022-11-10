@@ -19,15 +19,12 @@ function Product() {
     const [countScroll, setCountScroll] = useState<number>(8)
     const [hasMore, setHasMore] = useState<boolean>(true)
     let count: number = 4;
-    const fetchData = useCallback(async (countScroll: number) => {
+    const fetchData = async (countScroll: number) => {
         const data = await getAllProducts()
-        console.log(data)
         setAllProducts(data.products)
         setCountScroll((prev) => prev += 1)
         setProducts((prev: any) => data.products.filter((item: any, i: number) => i <= countScroll))
-
-        console.log(count)
-    }, [])
+    }
     useEffect(() => {
         fetchData(countScroll)
     }, [])
@@ -35,7 +32,6 @@ function Product() {
         if (countScroll > allProducts.length || countScroll === allProducts.length) {
             setHasMore(false)
         } else {
-            console.log('scroll')
             setCountScroll((prev) => prev += 1)
             setProducts((prev: any) => allProducts.filter((item: any, i: number) => i <= countScroll))
         }

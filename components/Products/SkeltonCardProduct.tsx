@@ -5,10 +5,10 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Grid } from "@mui/material";
-const SkeltonCardProduct:any = ({ amount }: { amount: number }) => {
+const SkeltonCardProduct: any = ({ amount }: { amount: number }) => {
     const loadCards = Array(amount).fill(1);
     return loadCards.map((_, i) => (
-        <Grid item xs={4}>
+        <Grid key={i} item xs={4}>
             <Card style={{ backgroundColor: "#444444d9", borderRadius: '12px', border: '1px solid #ffededd9', color: 'white' }} sx={{ maxWidth: 345, maxHeight: 500 }}>
                 <Skeleton width={350} height={310} baseColor="gray" />
 
