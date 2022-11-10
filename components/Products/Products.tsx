@@ -30,10 +30,13 @@ function Product() {
         setProducts((prev: any) => data.products.filter((item: any, i: number) => i <= countScroll))
     }
     useEffect(() => {
+        window.scrollTo(0, 0)
+        window.scrollY = 0
+        document.body.scrollTo(0,0)
         fetchData(countScroll)
     }, [])
     const scroll = () => {
-        if (countScroll > allProducts.length || countScroll === allProducts.length) {
+        if (countScroll > allProducts.length) {
             setHasMore(false)
         } else {
             setCountScroll((prev) => prev += 1)
@@ -52,7 +55,7 @@ function Product() {
                 </p>
             }
             // below props only if you need pull down functionality
-            pullDownToRefreshThreshold={1}
+            pullDownToRefreshThreshold={10}
 
             pullDownToRefreshContent={
                 <h3 style={{ textAlign: 'center' }}>&#8595; Pull down to refresh</h3>
@@ -61,14 +64,14 @@ function Product() {
                 <h3 style={{ textAlign: 'center' }}>&#8593; Release to refresh</h3>
             }
         >
-            <Grid container spacing={2}>
+            <Grid container textAlign="center" spacing={15}>
                 {products.length > 1 ?
                     products.map((product: any, index: number) => {
                         return (
                             <>
                                 {product ?
-                                    <Grid key={index} item xs={4}>
-                                        <Card style={{ backgroundColor: "#444444d9", borderRadius: '12px', border: '1px solid #ffededd9', color: 'white' }} sx={{ maxWidth: 345, maxHeight: 500 }}>
+                                    <Grid width="100%" key={index} textAlign={"center"} style={{ textAlign: "center" }} item xs={12} md={4}>
+                                        <Card style={{ backgroundColor: "#444444d9", borderRadius: '12px', border: '1px solid #ffededd9', color: 'white' }}>
                                             <Image style={{ maxHeight: 310 }} src={product.images[0]} width={350} height={310} alt={product.title} placeholder="blur" blurDataURL={product.images[0]} />
                                             <CardContent>
                                                 <Typography gutterBottom variant="h5" component="div">
