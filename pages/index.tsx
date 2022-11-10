@@ -5,14 +5,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { useState, useEffect, useCallback } from 'react'
 import dynamic from 'next/dynamic'
-
-// const Product = dynamic(() => import('../components/Products/Products'))
 import Product from '../components/Products/Products'
-const fetchProducts = async () => {
-  const products = await fetch('https://dummyjson.com/products', { cache: "force-cache" })
-    .then(res => res.json())
-  return products
-}
 
 
 export default function Home() {
@@ -29,9 +22,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <>
           <Product />
-        </>
       </main>
 
     </div>
